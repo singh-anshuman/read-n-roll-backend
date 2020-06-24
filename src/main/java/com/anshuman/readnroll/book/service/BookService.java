@@ -17,6 +17,7 @@ public class BookService {
 	private BookRepository bookRepository;
 	
 	public List<Book> getBooks(String searchString) {
+		//	TODO: Filtering should be done at database level not at JAVA level to avoid large amount of data flowing in the network
 		return bookRepository.findAll().stream()
 				.filter(book -> StringUtils.containsIgnoreCase(book.getTitle(), searchString))
 				.collect(Collectors.toList());
